@@ -67,7 +67,7 @@ void main(){
 			  
 	     if( cont_pantalon > 0 ){
 		    k_pantalon=(cont_pantalon*650)/(1000);
-			   printf("\n pantalones en kilogramos: %f", k_pantalon);
+			   printf("\n pantalones en kilogramos: %.2f", k_pantalon);
 	                              }
 	  
 	  	if(cont_camisa > 0 ){
@@ -75,8 +75,6 @@ void main(){
 			   printf("\n camisa en kilogramos: %f", k_camisa ); 
 	         }
 	  
-		
-		  
 		printf("\n El estudiante %s  trajo:  %i pantalones,  %i camisas", nombre,cont_pantalon,cont_camisa);  
 	
 		   	
