@@ -52,10 +52,10 @@ void main(){
 	     scanf("%c",&resp);
 	 }
 	
-	promedio=acum/cont;
+	promedio=acum/(cont+1);
 	
 	printf("\nPromedio actual: %.2f ",promedio);
-	printf("\nIngrese el promedio del año anterior: ");
+	printf("\nIngrese el promedio del aÃ±o anterior: ");
 	 scanf("%i",&pro_anterior);
 	
       porcentaje=100-((pro_anterior/promedio)*100);
