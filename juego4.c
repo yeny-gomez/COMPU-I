@@ -112,6 +112,6 @@ void main(){
 	}
 	
 	veces_perdio=(100*cont_perdidos)/cont_total;
-	printf("\n\nPorcentaje de veces que se salio del rango  %.2f%",veces_perdio);
+	printf("\n\nPorcentaje de veces que se salio del rango  %.2f",veces_perdio);
 	
 }
