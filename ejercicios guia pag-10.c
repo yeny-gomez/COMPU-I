@@ -10,10 +10,8 @@
 void main(){
 	
 	char pais[10],resp;
-	int dias,x,temperatura,cont=0,acum=0,cont_1=0,acum_1=0,cont_temperatura=0,pro_anterior;
-	float promedio_p,promedio_g,porcentaje;
-	
-	//---cont sin inicializar
+	int dias,x,temperatura,cont=0,acum=0,cont_1=0,acum_1=0,cont_temperatura=0,pro_anterior,porcentaje;
+	float promedio_p,promedio_g;
 	
 	 
 	 do{
@@ -53,11 +51,8 @@ void main(){
 	 }while(resp=='s');
 	 
 	 promedio_g=acum_1/cont_1;
-     printf("\n\nPomedio de paises: %.2f",promedio_g);
+     printf("\n\nPomedio de paises: %i",promedio_g);
 	
-	
-	
-	printf("\nPromedio actual de todos los paises: %.2f ",promedio_g);
 	printf("\nIngrese el promedio del año anterior de todos los paises: ");
 	 scanf("%i",&pro_anterior);
 	
@@ -73,7 +68,5 @@ void main(){
 	if(porcentaje == pro_anterior){
 	   	printf("\nSitucion estable");
 	}
-	
-	
 	
 }
