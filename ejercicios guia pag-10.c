@@ -10,10 +10,10 @@
 void main(){
 	
 	char pais[10],resp;
-	int dias,x,temperatura,cont,acum=0,cont_2,acum_2,cont_temperatura=0,pro_anterior,porcentaje;
-	float promedio_p,promedio_g;
+	int dias,x,temperatura,cont=0,acum=0,cont_1=0,acum_1=0,cont_temperatura=0,pro_anterior;
+	float promedio_p,promedio_g,porcentaje;
 	
-	
+	//---cont sin inicializar
 	
 	 
 	 do{
@@ -24,6 +24,7 @@ void main(){
 			  scanf("%i",&dias);
 		    acum=0;
 		     cont=0;
+		     
 			for(x=0;x<dias;x++){
 				printf("\n   Dia*%i* ",x+1);
 				printf("\n Ingrese temperatura (ºF): ");
@@ -31,8 +32,8 @@ void main(){
 				 acum=+temperatura;
 				  cont++;
 				  
-				  if(x > 0){
-					if(x < dias){				
+				  if(x != 0){
+					if(x != dias){				
 						if( temperatura >= 105){
 							cont_temperatura++;
 						}	
@@ -45,9 +46,10 @@ void main(){
 		    cont_1++;  
 		     
 		 promedio_p=acum/(cont);
-	      prinft("\n\nEl promedio del pais: %.2f",promedio_p;
+	      prinft("\n\nEl promedio del pais: %.2f",promedio_p);
 		   printf("\nOtro pais participo(s/n):");	
 	        scanf("%c",&resp);
+	        
 	 }while(resp=='s');
 	 
 	 promedio_g=acum_1/cont_1;
@@ -64,15 +66,10 @@ void main(){
 	if( porcentaje > 20){
 		printf("\nSitucion grave");
 	}
-	if(porcentaje > 0){
-		if(porcentaje < 20){
+	if(porcentaje < 20 ){
 		printf("\nSitucion normal");	
-		}
 	}
 	
-	if(porcentaje < 0){
-	   	printf("\nSitucion estable");
-	}
 	if(porcentaje == pro_anterior){
 	   	printf("\nSitucion estable");
 	}
