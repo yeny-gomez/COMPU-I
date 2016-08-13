@@ -3,37 +3,30 @@
 
 #include<stdio.h>
 #include<conio.h>
-#include<define.h>
+#include<stdlib.h>
 
 
 
 void main(){
 	
-	char p_origen[10],pais[10];
-	int dias,x,temperatura,cont,acum=0,cont_temperatura=0,pro_anterior,porcentaje;
-	float promedio;
+	char pais[10],resp;
+	int dias,x,temperatura,cont,acum=0,cont_2,acum_2,cont_temperatura=0,pro_anterior,porcentaje;
+	float promedio_p,promedio_g;
 	
 	
 	
-	printf("\t\nPais donde se encuentra el organismo: ");
-	 scanf("%s",p_origen);
-	
-	printf("\nAlgun pais participo(s/n): ");
-	 scanf("%c",&resp);
-	 resp=tolower(resp);
 	 
-	 while(resp=='s'){
-			
+	 do{
 			printf("\nNombre del pais:");
 			fflush(stdin);
 			 scanf("%s",pais);
 			print("\nIngrese cuantos dias tomo para el calculo: ");
 			  scanf("%i",&dias);
-		
+		    acum=0;
+		     cont=0;
 			for(x=0;x<dias;x++){
-				
 				printf("\n   Dia*%i* ",x+1);
-				printf("\n Ingrese temperatura: ");
+				printf("\n Ingrese temperatura (ºF): ");
 				 scanf("%i",&temperatura);
 				 acum=+temperatura;
 				  cont++;
@@ -45,20 +38,28 @@ void main(){
 						}	
 					}
 				  }
-				  
-			}
-			
-		printf("\nOtro pais participo(s/n):");	
-	     scanf("%c",&resp);
-	 }
+		     }
+		     
+		  printf("\n\n %i Dia(s) que la temperatura supero los 105 ºF",cont_temperatura);
+		   acum_1=+acum;//----acumulador para el calculos de paises
+		    cont_1++;  
+		     
+		 promedio_p=acum/(cont);
+	      prinft("\n\nEl promedio del pais: %.2f",promedio_p;
+		   printf("\nOtro pais participo(s/n):");	
+	        scanf("%c",&resp);
+	 }while(resp=='s');
+	 
+	 promedio_g=acum_1/cont_1;
+     printf("\n\nPomedio de paises: %.2f",promedio_g);
 	
-	promedio=acum/(cont+1);
 	
-	printf("\nPromedio actual: %.2f ",promedio);
-	printf("\nIngrese el promedio del año anterior: ");
+	
+	printf("\nPromedio actual de todos los paises: %.2f ",promedio_g);
+	printf("\nIngrese el promedio del año anterior de todos los paises: ");
 	 scanf("%i",&pro_anterior);
 	
-      porcentaje=100-((pro_anterior/promedio)*100);
+      porcentaje=100-((pro_anterior/promedio_g)*100);
 	
 	if( porcentaje > 20){
 		printf("\nSitucion grave");
