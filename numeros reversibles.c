@@ -5,10 +5,10 @@
 
 int main(){
 	
-	int x,z,y,w,caso,limite_digito,comprovar_digitos,cont=0,parar_d_limite,parar_c_cero,m,n,p,base=1,multipli,sumando;
-	int n_alrevez,resultado,resultado_total,numero=0;
+	int x,z,y,w,caso,limite_digito,comprovar_digitos,cont=0,parar_d_limite,parar_c_cero,m,n,p,base=1,multipli,sumando,ban,ban_1;
+	int n_alrevez,resultado,resultado_total=0,numero,aux;
 	
-	printf("\n\n¿CUANTOS NUMEROS REVERSIBLES?");
+	printf("\n\nÂ¿CUANTOS NUMEROS REVERSIBLES?");
 	///----- el numero que ingresa es la candidad de dijitos que se toman para el calculo
      //------pero no todas las convinaciones da numero impar, ya que algunos resultados almenos tienen un par
 	  //-----por lo que ya no es un numero reversible
@@ -19,95 +19,127 @@ int main(){
 		printf("\n\nIngrese un entero numero (caso): ");
 		  scanf("%i",&caso);
 		  
-		
+		if( caso > 1){
+			
+			
+	
 		  //**************** calculo de caso( digito que me da el usuario)
+		  resultado_total=0;
 		  parar_d_limite=1;
 		  numero=10;//--------SALTO LOS NUMERO DE UN DIGITO
-		   cont=0;
+		   
 	    do{
 				
-			numero=+numero+1;
+			numero=numero+1;
 			
 			x=numero;
 	 
-			  
 			//----------- division para saber los digitos que salen
-			
-			parar_c_cero=0;//------para romper la division
-			do{ 
-				
-				 
+			cont=0;
+		      ban=0;
+			do{ 				 
+					
 				cont++;//------tomo los digitos NOTA AQUI TOMA HASTA EL ULTIMO DIGITO( esta poscicion es importante)
-				
-				y=x/10;
-				z=x%10;
-			 
-				printf("*** %i",x);
-				if( y <= 0){
-					   	
-             	//return 0;
-					parar_c_cero=0;//----paro si llego al tamaño de digitoa
-				}else if( z <= 0){
-					parar_c_cero=0;///----paro si sale algun digito cero
+
+		       z=x%10;
+				x=x/10;
+
+				if( z == 0 ){///hay un digito con cero
+					ban=1;	
 				}
-			     	
-             
-			}while( parar_c_cero );
+		     
+			}while( x != 0 );
 		   ///---------------
-				
-			if( cont > caso){
-				
-				
-				parar_d_limite=0;
+		 ban_1=0;
+	    	if( ban == 0){
+				 
 				
 				
-			}else if( cont <= caso){
+			   if( cont > caso){
+				     parar_d_limite=0;	
+		    	}else if( cont <= caso){///****** sacar el numero alrevez
 				
 				    n_alrevez=0;
 				    n=numero;
-				    for( w=0; w<cont;w++){
-					   
-					    m= n%10;
+				    sumando=0;
+				  
+				    for( w=1; w<cont;w++){
+					
+					  m= n%10;
+					   n=n/10;
 					    
-					    base=1;
-					  for( p=w ;p<cont; p++ ){
-							base=base*10;
-							
-					  }
-					  
-					  multipli=m*base;
-					  sumando=+multipli;
-					
-					    n=numero/10;
-					
-	                  }
-			
-			    n_alrevez= sumando+m;
-			    
-			    resultado=n_alrevez+numero;
-			    
-			    resultado_total++;
-			  //  printf("\n\n Numero reversible %i con %i digitos", resultado,cont);
-			
 				
+					    base=1;
+					    	
+					  for( p=w ;p<cont; p++ ){
+							
+							base=base*10;
+
+					  }
+			  
+					  multipli=m*base;
+					  sumando=sumando+multipli;			   
+					    
+	                  }
+	    	         
+	              
+	                       
+			          n_alrevez= sumando+n;
+			    
+			       printf("\n\nNumero alrevez ++%i++ numero *%i*",n_alrevez,numero);
+			       resultado=n_alrevez+numero;
+			       printf("\n\nSuma de los dos numero %i",resultado );
+			       
+			       
+			        aux=resultado;
+			        cont=0;
+			        
+			        do{
+						cont++;
+						aux=aux/10;
+			      
+				  	}while( aux != 0);
+				  	ban_1=0;
+				  	aux=resultado;
+				  	
+				  	for(w=1;w<cont;w++){
+						
+					   m=aux%10;
+						aux=aux/10;
+						if( m%2 != 0){
+							 ban_1=1;
+						} 
+						
+						
+				  	}
+				  	
+				  	
+				  	if( ban_1 == 1){
+						if( m%2 == 0){
+							resultado_total++;
+						}
+				  	}
+							
+						
+						
+						
+			   }
+			
 			}
-			
-			///-----suma de los dos numero
-			
-	      
-			
+		
+		
 			
 		}while( parar_d_limite);	
 		
 		//*************************************
 		
 		
+		printf("\n\nTotal denumeros reversibles: %i",resultado_total);
 		
 		
+			}
 		
-		
-		
-	}while( caso == 0);
+	}while( caso != 0);
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	
 	
