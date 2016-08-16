@@ -6,7 +6,7 @@
 
 void main(){
 	
-	int numero,multipli,div,rec,cont,cont_2,x,y,suma_iz,suma_der,suma,rec_1,div_1,suma_1;
+	int numero,multipli,div,rec,cont,cont_2,x,y,suma_iz,suma_der,suma,rec_1,div_1,suma_1,o;
 	char resp;
 	
 	printf("\n\n\t NUMERO KAPREKAR");
@@ -35,9 +35,11 @@ void main(){
 				div=numero;
 	          for( x=1; x< cont-1; x++){//-----la x indica pa potencia //-- -1 porque el 
 					
-					rec=div/10;
+					rec=div%10;
 					div=div/10;
-					
+					printf("\n\n %i",div);
+				printf("\n\n %i",rec);
+				system("pause");
 					suma=div*pow(10,x);
 					suma=+rec;
 					
@@ -54,9 +56,11 @@ void main(){
 						
 					}
 					
-					printf("\n\n %i",suma_iz+suma_der);
+					
 	          }
-				
+	          
+	       //   o=suma_iz+suma_der;
+				printf("\n\n %i",o);
 				
 				cont_2++;
 			}while( cont_2 != cont);
