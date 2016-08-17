@@ -112,7 +112,6 @@ void main(){
 				for( x=aux; x<cont_2; x++){
 				    --y;
 					multipli=vec_aux[x] * pow(10,y);
-					printf("\n\n suma: *%i*",suma_1);
 					suma_1=suma_1+multipli;
 						
 				}
