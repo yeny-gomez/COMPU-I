@@ -6,10 +6,12 @@
 
 void main(){
 	
-	int numero,multipli,div,rec,cont,cont_2,x,y,suma_iz,suma_der,suma,rec_1,div_1,suma_1,vec[12],vec_aux[12],potencia,aux;
+	long int numero,suma_der,suma_iz,suma_1,suma,multipli; 
+	int div,rec,cont,cont_2,x,y,rec_1,div_1,vec[20],vec_aux[20],potencia,aux,ban=0,ban_1=0,ban_2=0,n_aux;
 	char resp;
 	
 	printf("\n\n\t NUMERO KAPREKAR");
+	printf("\n\n  Ingrese un numero para comprobar si es numero kaprekar");
 		 
 	do{
 		//*****************************************
@@ -19,7 +21,7 @@ void main(){
 			if( numero == 0){//-------para que no ejecute el cero mas abajo se sale del sistema
 				break;
 			}
-	     }while( numero < 0 || numero > 65536 );
+	     }while( numero < 0 || numero > 65536);
 	    //*****************************************
 	    
 	    	if( numero == 0){//-------para que no ejecute el cero mas abajo se sale del sistema
@@ -27,11 +29,10 @@ void main(){
 			}	
 	    
 	    //---------------------------para elevar a la potencia
-	    
-	      numero=pow(numero,2);
+	      n_aux=numero;
+	    numero=pow(numero,2);
 	    printf("\n\n numero * 10 a la 2: %i",numero);
 	    //---------------------------
-	    
 
 			cont=0;
 			div=numero;
@@ -39,13 +40,16 @@ void main(){
 			    rec=div%10;
 			    vec[cont]=rec;
 			    div=div/10;
-			   
+			   		   
 			    	cont++;
 			    	
 			}while( div > 9);
 
 	           vec[cont]=div;///----es el ultimo digito que no puedo guardar
 	                         //----- contador con el ultimo numero de contador
+          
+             
+         //--------------------------------    INERTIR VECTORES
              
           cont_2=0;
           
@@ -57,7 +61,33 @@ void main(){
 	
 		  }while( cont != -1);//----meno uno porque llego a la posicion cero del vector
     
-	         aux=0;
+	      //-----------------------------
+	      
+	      
+	      	 //-----------------------------------------  para no dejar pasar las potencias de 10     
+			ban=0;
+			ban_1=0;
+			ban_2=0;
+			
+			 if( vec_aux[0] == 1){
+				ban=1;	
+             }
+             
+             for( x=1; x<cont_2; x++){
+			   if( vec_aux[x] == 0){
+				  ban_1=1;	
+                 }
+             }
+             
+             if( ban==1){
+					if( ban_1==1){
+						ban_2=1;
+					}
+             }
+              //----------------------------------------       
+               
+	      
+		     aux=0;
              cont=0;
              suma=0;
              suma_iz=0;
@@ -68,10 +98,10 @@ void main(){
 				suma_1=0;
 				y=aux;
 				
-				for( x=0; x<aux; x++){
-						
+				for( x=0; x<aux; x++){	
 					multipli=vec_aux[x] * pow(10,--y);
 					suma_1=suma_1+multipli;//---10 a la cero 1
+					
 				}
 				
 				suma_iz=suma_1;
@@ -80,24 +110,35 @@ void main(){
 				suma_1=0;
 			      y=(cont_2) - (aux);
 				for( x=aux; x<cont_2; x++){
-				
-					multipli=vec_aux[x] * pow(10,--y);
+				    --y;
+					multipli=vec_aux[x] * pow(10,y);
+					printf("\n\n suma: *%i*",suma_1);
 					suma_1=suma_1+multipli;
+						
 				}
 				
 				suma_der=suma_1;
-				printf("\n\nderecha %i",suma_der);
-				
+				printf("\nderecha %i",suma_der);
 				
 				
 				suma=suma_iz+suma_der;
-				printf("\n\n Suma %i ",suma);			
+				printf("\n\n\n Suma %i ",suma);			
 				
-							
-							
+				
+				if( suma == n_aux){
+					printf("\n\n SALIDA:  SI");
+				}else{
+					printf("\n\n SALIDA:  NO");
+				}
+						
 				cont++;
-				printf("\n%i ****",cont);
 		}while( cont_2-1 != cont );
+	
+	  
+	         if( ban_2 == 1 ){
+				printf("\n\nLAS POTENCIAS DE 10 NO SON NUMERO KAPREKAR");
+	         }
+
 	
 	  printf("\n\nDesea calcular otro numero(s/n): ");
 	  fflush(stdin);
@@ -105,10 +146,6 @@ void main(){
 		   resp=tolower(resp);
 		   
 	}while( resp == 's' );	   
-	
-	
-	
-	
-	
-	
 }
+
+
