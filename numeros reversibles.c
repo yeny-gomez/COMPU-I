@@ -5,7 +5,7 @@
 
 int main(){
 	
-	int x,z,y,w,caso,limite_digito,comprovar_digitos,cont=0,parar_d_limite,parar_c_cero,m,n,p,base=1,multipli,sumando,ban,ban_1;
+	int x,z,y,w,caso,limite_digito,comprovar_digitos,cont=0,cont_1,parar_d_limite,parar_c_cero,m,n,p,base=1,multipli,sumando,ban,ban_1;
 	int n_alrevez,resultado,resultado_total=0,numero,aux;
 	
 	printf("\n\n¿CUANTOS NUMEROS REVERSIBLES?");
@@ -16,12 +16,11 @@ int main(){
 	
 	////+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	do{
-		printf("\n\nIngrese un entero numero (caso): ");
-		  scanf("%i",&caso);
-		  
-		if( caso > 1){
-			
-			
+           resultado_total=0;
+			do{
+			 printf("\n\nIngrese un entero numero (caso): ");
+		     scanf("%i",&caso);		
+			}while( caso > 9);
 	
 		  //**************** calculo de caso( digito que me da el usuario)
 		  resultado_total=0;
@@ -50,14 +49,12 @@ int main(){
 		     
 			}while( x != 0 );
 		   ///---------------
+		   printf("\n\n %i",cont);
+		   
 		 ban_1=0;
 	    	if( ban == 0){
-				 
 				
-				
-			   if( cont > caso){
-				     parar_d_limite=0;	
-		    	}else if( cont <= caso){///****** sacar el numero alrevez
+			      if( cont == caso){///****** sacar el numero alrevez
 				
 				    n_alrevez=0;
 				    n=numero;
@@ -92,40 +89,46 @@ int main(){
 			       
 			       
 			        aux=resultado;
-			        cont=0;
+			        cont_1=0;
 			        
 			        do{
-						cont++;
+						cont_1++;
 						aux=aux/10;
 			      
 				  	}while( aux != 0);
 				  	ban_1=0;
 				  	aux=resultado;
 				  	
-				  	for(w=1;w<cont;w++){
+				  	
+				  	if( cont_1 == cont ){
+				  		
+				  		
+				       	for(w=1;w<cont;w++){
 						
-					   m=aux%10;
-						aux=aux/10;
-						if( m%2 != 0){
-							 ban_1=1;
-						} 
+					         m=aux%10;
+					      	aux=aux/10;
+					     	if( m%2 == 0){
+								ban_1=1;/// si almenos uno es par no se calcula
+						       } 
 						
-						
-				  	}
+				           }
+					  }
+				  	
+				  	if( ban_1 == 0){
+	                    resultado_total++;
+					  }
+				  
 				  	
 				  	
-				  	if( ban_1 == 1){
-						if( m%2 == 0){
-							resultado_total++;
-						}
-				  	}
-							
-						
-						
-						
-			   }
+				  	
+				  	
+				  					
+		        }
+			    
+      		}else{
+      			parar_d_limite=0;
+			  }
 			
-			}
 		
 		
 			
@@ -137,7 +140,7 @@ int main(){
 		printf("\n\nTotal denumeros reversibles: %i",resultado_total);
 		
 		
-			}
+	
 		
 	}while( caso != 0);
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
