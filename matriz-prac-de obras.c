@@ -21,14 +21,14 @@ void main(){
 		
 		printf("\n Ingrese el codigo del trabajador %i: ",x+1);
 		 fflush(stdin);
-		 scanf("%s ",&vec_cod[x]);
+		 gets(vec_cod[x]);
 		printf("\n\n Ingrese el pago del trabajor %i: ",x+1); 
-		 scanf("%d ",&vec_pag[x]);
+		 scanf("%d",&vec_pag[x]);
 	  printf("\n Nota: Si no trabajo ingrese cero");
 		for( y=0; y<D;y++){
 			printf("\n Ingrese la hora del trabajador %i del dia %i: ",x+1,y+1);
 			 
-			 scanf("%d",matriz[x][y]);
+			 scanf("%d",&matriz[x][y]);
 			vec_s_horas[x]=vec_s_horas[x]+matriz[x][y];//-----suma total de horas por trabajdor
 			//------arreglar OJOOOOOOOO
 		   		
@@ -131,7 +131,6 @@ void main(){
 	//------------------------------   I
 	printf("\n\n TRABAJADORES QUE NO TRABAJARON EL QUINTO DIA\n ");
 	
-
 	for( x=0; x<T; x++){
             if( matriz[x][4] == 0){
 				printf("\n %s",vec_cod[x]);
@@ -141,11 +140,3 @@ void main(){
 	*/
 	
 }
-
-
-
-
-
-
-
-
