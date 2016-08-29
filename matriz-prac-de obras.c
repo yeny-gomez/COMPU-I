@@ -121,7 +121,7 @@ void main(){
 	pago_obra=0;
 		
 	      for(x=0;x<D;x++){//----------para dias trabajadas
-	       	pago_obra=pago_obra+vec_pago_total[x];
+	       	pago_obra+=vec_pago_total[x];
 	         }
 	         
 	    printf("El pago total es de %i",pago_obra);
