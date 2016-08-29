@@ -2,8 +2,8 @@
 #include<conio.h>
 #include<stdlib.h>
 #include<string.h>
-#define T 10
-#define D  7
+#define T 5
+#define D 3
 
 void main(){
 	
@@ -19,38 +19,38 @@ void main(){
 
 	for( x=0; x<T; x++){
 		
-		printf("\n Ingrese el codigo del trabajador %i: ",x+1);
+		printf("\n\n Ingrese el codigo del trabajador %i: ",x+1);
 		 fflush(stdin);
 		 gets(vec_cod[x]);
 		printf("\n\n Ingrese el pago del trabajor %i: ",x+1); 
 		 scanf("%d",&vec_pag[x]);
-	  printf("\n Nota: Si no trabajo ingrese cero");
+	  printf("\n Nota: Si no trabajo ingrese cero**\n");
 		for( y=0; y<D;y++){
 			printf("\n Ingrese la hora del trabajador %i del dia %i: ",x+1,y+1);
 			 
 			 scanf("%d",&matriz[x][y]);
-			vec_s_horas[x]=vec_s_horas[x]+matriz[x][y];//-----suma total de horas por trabajdor
+			vec_s_horas[x]+=matriz[x][y];//-----suma total de horas por trabajdor
 			//------arreglar OJOOOOOOOO
 		   		
 		}
 	}
-	/*
+
 	//----------------------------------- b)
      
 	printf("\n\n SUMA DE HORAS LABORADOAS POR TRABAJADOR");
 	  for(x=0;x<T;x++){
 	   printf("Trabajador %s horas de trabajadas: %i",vec_cod[x], vec_s_horas[x]);
      }
-     
+    
     //-------------------------------------- c)
     
 	printf("\n\n PAGO DE CADA TRABAJADOR ");
 	  for(x=0;x<T;x++){
 	     printf("\n  Trabajado %s",vec_cod[x]);
-	         vec_pago_total[x]=vec_pag[x]*vec_s_horas[x];
+	         vec_pago_total[x]*=vec_s_horas[x];
 	     printf(" \n pago: %i",vec_pago_total[x] );
      }
-    
+    	 
     //---------------------------------------- d)
     
     printf("\n\n TRABAJADOR o TRABAJADORES CON MAYOR HORAS \n");	
@@ -76,7 +76,7 @@ void main(){
 	   		
 	   for(y=0;y<D;y++){//----------para dias trabajadas
 		 for(x=0;x<T;x++){
-				vec_dias[y]=vec_dias[y]+matriz[x][y];
+				vec_dias[y]+=matriz[x][y];
 			}
 	   }
 	
@@ -87,21 +87,20 @@ void main(){
 			}
 	   }
 	//------------------------------------f
-	
+/*	
      printf("\n\n PORCENTADE DE PAGO\n ");
   
       printf("\n Ingrese el codigo del empleado: ");
         scanf("%s",nombre);
      
      for( x=0;x<T;x++ ){
-			
 			if( strcomp(nombre,vec_cod[x]) == 0 ){
 				porcentaje=vec_pago_total[x];///---------NO SE COMO CALULAR EL PORCENTAJE
 			}	
      }
      
      printf("\n\n El porcentaje es: %2.f",porcentaje);
-      
+ */     
 	//---------------------------g
 	
   printf("\n\n PORCENTADE DE HORAS TRABAJADAS POR DIA\n ");
@@ -114,7 +113,7 @@ void main(){
 	      for(x=0;x<D;x++){//----------para dias trabajadas
 			printf("\n\n Dia %i :%i ",(100*vec_dias[x])/(total_horas));
 	         }
-	
+
 	//--------------------------h
 	
 	  printf("\n\n PAGO TOTAL DE LA OBRA\n ");
@@ -137,6 +136,6 @@ void main(){
 					
             }		
 	}
-	*/
+	
 	
 }
