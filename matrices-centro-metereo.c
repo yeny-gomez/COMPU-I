@@ -1,11 +1,12 @@
 #include<conio.h>
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 
 
 void main(){
 	
-	int fi,co,x,y,vec_horas[50],matriz[x][y],suma_g,vec_d[50],vec_l[50],menor=999999,mayor=-999999,cont,a,suma;
+	int fi,co,x,y,vec_horas[50],matriz[50][50],suma_g,vec_d[50],vec_l[50],menor=9999,mayor=-9999,cont,a,suma,ban;
 	char vec_lugares[50][10],aux[10];
 	
 	printf("\nCENTRO METEOROLOGIA");
@@ -16,23 +17,24 @@ void main(){
 	    scanf("%i",&co);
 	
 	 for(y=0;y<co;y++){
-	  	printf("\n Ingrese la horas: ");
-		  	  scanf("%i",vec_horas[y]);
+	  	printf("\n Ingrese la horas %i: ",y+1);
+		  	  scanf("%i",&vec_horas[y]);
 	  }
 	
 	  for(x=0;x<fi;x++){
-			printf("\n Ingrese el lugar: ");
-			 scanf("%s",vec_lugares[x]);
+			printf("\n Ingrese el lugar %i: ",x+1);
+			fflush(stdin);
+			gets(vec_lugares[x]);
 	  	  
 		for(y=0;y<co;y++){
-			printf("\n Ingrese la presion: ");
-			   scanf("%i",matriz[x][y]);
+			printf("\n Ingrese la presion de l ahora %i: ",y+1);
+			   scanf("%i",&matriz[x][y]);
 			
 		}	
 	  }
 	
 	//--------------------------------------- b)
-		printf("\n PRESION DEL 3er LUGAR 5to DIA");
+		printf("\n\n PRESION DEL 3er LUGAR 5to DIA");
 	
 		  for(x=0;x<fi;x++){
 		    for(y=0;y<co;y++){
@@ -46,7 +48,6 @@ void main(){
 	  }
 	//----------------------------------------- c)
 	
-
 	suma_g=0;
 	  cont=0;
 	
@@ -57,10 +58,10 @@ void main(){
 		}
 	}
 	
-	printf("\n EL PROMEDIO GENERAL DEL ESTADO : %i", suma/cont);
+	printf("\n EL PROMEDIO GENERAL DEL ESTADO : %i", suma_g/cont);
 	
 	//--------------------------------------------d)
-	printf("\n PROMEDIO POR DIA");
+	printf("\n\n PROMEDIO POR DIA");
 	
 	for( y=0; y<co;y++){
 		vec_d[y]=0;
@@ -78,7 +79,7 @@ void main(){
 	
 	//------------------------------------------------- e)
 	
-		printf("\n PROMEDIO DE LA PRESION POR LUGAR");
+		printf("\n\n PROMEDIO DE LA PRESION POR LUGAR");
 	
     for( x=0; x<fi;x++){
 		vec_l[x]=0;
@@ -91,44 +92,43 @@ void main(){
 	  }
 	
 	for(x=0;x<fi;x++){
-		printf("\n Lugar %s con promedio %i ",vec_lugares[x],(vec_l[x]/co));
+		printf("\n\n Lugar %s con promedio %i ",vec_lugares[x],(vec_l[x]/co));
 	}
 	//------------------------------------------------ f)
 	
-	  printf("\n Ingrese Santa Ana para buscarla en el registro: ");
-	   scanf("%s",aux);
-
-	
-	    for(x=0;x<fi;x++){
-	         
-			 if( strcomp(aux,vec_lugares[x]) == 0){
-					
+	  printf("\n\n BUSCAR SI SE REGISTRO SANTA ANA");
+//	  fflush(stdin);
+//	      gets(aux);
+      ban=0;
+	    for(x=0;x<fi;x++){    
+			 if( strcmp("santa ana",vec_lugares[x]) == 0){
+				ban=1;
 				for(y=0;y<co;y++){
-					
-					if( matriz[x][y] < menor)
-					menor=matriz[x][y];
+					if( matriz[x][y] < menor){
+						menor=matriz[x][y];					
+					}
 				}
-					
-	         }	
+				printf("\n\n La menor presion de Santa Ana: %i",menor);
+	         }
       	}
-	printf("\n La menor presion de Santa Ana: %i",menor);
+      	
+           if( ban == 0 ){
+		    	printf("\n\nNo se registro santa ana");
+           }
 
-	
 	//------------------------------------------  g)
 	
-	
+	printf("\n\nPRESION MAS ALTA");
 	
 	   for(x=0;x<fi;x++){
 	    	for(y=0;y<co;y++){
-					
 				  if( matriz[x][y] > mayor){
 						mayor=matriz[x][y];
 						a=x;
 				  }
     		}       
       	}
-      	
-  	
-	     printf("\n\n  El lugar donde se registro la mayor presion: %i",vec_lugares[a]);
+	     printf("\n\n  El lugar donde se registro la mayor presion: %s",vec_lugares[a]);
 	
 }
+
