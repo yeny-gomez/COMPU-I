@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<conio.h>
 #include<time.h>
-
+#include<string.h>
+#include<ctype.h>
 
 
 
@@ -326,6 +327,82 @@ void main(){
 	//-------------------------------18)
 	
     
+    char texto[300];
+    int vocales,palabras,letras_digitos,longitud;
+    float porcentaje;
+    
+    printf("\n\n Ingrese el texto: ");
+      fflush(stdin);
+    gets(texto);
+    
+    
+    longitud=strlen(texto);
+    palabras=0;
+    vocales=0;
+    letras_digitos=0;
+    
+      for( x=0; x<strlen(texto);x++){ 
+			
+			if(texto[x] == 'a'){//----- a
+				vocales++;
+			}
+			if(texto[x] == 'e'){
+				vocales++;
+			}
+			if(texto[x] == 'i'){
+				vocales++;
+			}
+			if(texto[x] == 'o'){
+				vocales++;
+			}
+			if(texto[x] == 'u'){
+				vocales++;
+			}
+			
+			if( texto[x] != ' ' && texto[x+1] == ' '){//------b
+				palabras++;
+			}
+		if( isalpha(texto[x]) != 0 ){//------c
+			letras_digitos++;
+		}
+		if( isdigit(texto[x]) == 1){
+			letras_digitos++;
+		}
+			if( texto[x] == ' ' ){//------d
+				texto[x]= '_';
+			}
+      }
+    
+       if( texto[longitud-1] != ' ' ){
+			palabras++;
+       }
+    
+   printf("\n\n longitud del texto: %i",longitud);      
+    
+    printf("\n\n palabras del texto: %i",palabras);
+    
+    printf("\n\n porcentaje de vocales del texto:%i",(100*vocales)/longitud);
+    
+    printf("\n\n porcentaje de letras y digitos del texto: %i",(100*letras_digitos)/longitud);
+    
+    printf("\n\n texto con 'piso' : %s",texto);
+    
+    strrev(texto);//------e
+    printf("\n\n el texto alrevez: %s",texto);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -496,9 +573,5 @@ void main(){
     
 	
 }
-
-
-
-
 
 
