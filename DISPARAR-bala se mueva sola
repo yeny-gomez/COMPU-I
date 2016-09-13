@@ -1,0 +1,142 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<windows.h>
+
+void imprimr(int matriz[20][20]);
+
+void main(){
+	
+	int x,y,matriz[20][20],fi,co,aux_fi,aux_co,ban,cont;
+	char tecla;
+	
+	
+	for(x=0;x<20;x++){
+		for(y=0;y<20;y++){
+			if( x == 0 ){
+				matriz[x][y]=0;
+			}else if(x == 19){
+				matriz[x][y]=0;
+			}else if( y == 0){
+				matriz[x][y]=0;
+			}else if( y == 19){
+				matriz[x][y]=0;
+			}else if( x == 18){
+				matriz[x][y]=1;
+			}else{
+				matriz[x][y]=2;
+			}
+		}
+	}
+	
+	
+	fi=18;
+	 co=10;
+	  ban=0;
+	   cont=0;
+	matriz[fi][co]=3;
+	
+	
+	do{
+		imprimr(matriz);
+		if( kbhit () ){
+		 tecla=getch();	
+	       tecla=getch();
+		}
+		
+		 switch(tecla){
+				
+				case 77:
+					
+					if(matriz[fi][co+1] == 1){
+						matriz[fi][co]=1;
+						matriz[fi][++co]=3;
+					}
+					
+					break;
+				
+				case 75:
+					 
+					 if(matriz[fi][co-1] == 1 ){
+						matriz[fi][co]=1;
+						matriz[fi][--co]=3;
+					 }
+					
+					
+					break;
+				
+				
+				case 72:
+					
+					if(matriz[fi-1][co] ==2){
+						matriz[fi-1][co] = 4;
+						aux_fi=fi-1;
+						aux_co=co;
+						ban=1;
+						tecla='a';
+					}
+					
+					break;
+				
+		 }
+		
+		if(ban){
+			
+			if( (cont % 2) == 0){
+				if(matriz[aux_fi-1][aux_co] == 2){
+					matriz[aux_fi][aux_co] = 2;
+				     matriz[--aux_fi][aux_co]=4;
+				}else{
+						matriz[aux_fi][aux_co] = 2;
+				}
+				cont=0;
+			}	
+		}
+		
+		cont++;
+		Sleep(100);
+		
+	}while(1);
+	
+	
+	
+	
+	
+	
+}
+
+void imprimr(int matriz[20][20]){
+	
+	int x,y;
+	system("cls");
+	  for( x=0;x<20;x++){
+			printf("\n");
+			for(y=0;y<20;y++){
+				
+				if( matriz[x][y] ==2 ){
+					printf(" ");
+				}
+				if( matriz[x][y] == 3){
+					printf("%c",1);
+				}
+				if( matriz[x][y] == 0){
+					printf("%c",178);
+			     }
+			    if( matriz[x][y] == 1){
+					printf("%c",176);
+			      }
+				if( matriz[x][y] == 4){
+					printf("%c",167);
+			      }				
+			}
+	  }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
